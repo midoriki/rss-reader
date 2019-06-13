@@ -1,33 +1,48 @@
-.App {
+@import '~antd/dist/antd.css';
+
+.centered {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.spinner {
+  padding: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.rss-feed {
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.rss-feed.active {
+  background-color: #002b36;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.rss-feed.active .ant-list-item-meta-content * {
+  color: #fff;
+}
+
+iframe {
+  height: 90vh;
+  width: 100%;
+}
+
+.article {
+  text-align: justify;
+}
+
+.article img {
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.sources {
+  position: fixed;
+  z-index: 10;
+  text-align: center;
+  height: 40px;
+  background-color: #fff;
+  width: 300px;
+}
+
+.article-list {
+  margin-top: 40px;
 }
