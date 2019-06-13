@@ -27,7 +27,11 @@ export default class Sources extends React.Component {
     return (
       <div className="sources">
         {sources.isFetching
-          ? <Spin />
+          ? (
+            <div className="centered" style={{ paddingTop: 20 }}>
+              <Spin />
+            </div>
+          )
           : (
             <Select
               placeholder="Select a Source"
