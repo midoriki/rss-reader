@@ -5,6 +5,6 @@ const instance = axios.create({
   baseURL: API_ENDPOINT,
 });
 
-instance.defaults.timeout = 5000;
+instance.defaults.timeout = 10000;
 
 export default instance;
