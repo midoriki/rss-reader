@@ -9,7 +9,8 @@ state shape
       {
         id: 1,
         name: 'Hacker News',
-        url: 'hn.rss'
+        url: 'hn.rss',
+        type: 'url' // optional
       }
     ],
   },
@@ -41,6 +42,7 @@ import {
   RECEIVE_ARTICLES,
   RECEIVE_XFRAME_OPTION,
   REQUEST_XFRAME_OPTION,
+  ADD_SOURCE,
 } from '../actions/rss';
 
 function sources(state = {
@@ -57,6 +59,17 @@ function sources(state = {
         isFetching: false,
         items: action.sources,
       });
+    case ADD_SOURCE: {
+      const maxId = state.items.reduce((acc, curr) => ((acc.id > curr.id) ? acc : curr));
+      return Object.assign({}, state, {
+        items: state.items.concat([{
+          id: maxId.id + 1,
+          name: action.name,
+          url: action.url,
+          type: 'url',
+        }]),
+      });
+    }
     default:
       return state;
   }

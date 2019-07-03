@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { List, Spin } from 'antd';
 import timeUtils from '../utils/time';
+import CopyIcon from './CopyIcon';
 
 export default class ArticleList extends React.Component {
   handleClickArticle(item) {
@@ -29,11 +30,14 @@ export default class ArticleList extends React.Component {
               renderItem={(item, index) => (
                 <List.Item
                   style={{ paddingLeft: 10 }}
-                  onClick={() => this.handleClickArticle(item)}
                   className={`rss-feed${
                     (index === selectedArticle) ? ' active' : ''}`}
+                  actions={[
+                    <CopyIcon text={item.link} />,
+                  ]}
                 >
                   <List.Item.Meta
+                    onClick={() => this.handleClickArticle(item)}
                     title={item.title}
                     description={(typeof item.isoDate === 'undefined')
                       ? timeUtils.toLocaleDateTime(item.pubDate)

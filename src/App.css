@@ -16,6 +16,10 @@
   background-color: #002b36;
 }
 
+.rss-feed.active .anticon {
+  color: white;
+}
+
 .rss-feed.active .ant-list-item-meta-content * {
   color: #fff;
 }
@@ -46,4 +50,17 @@ iframe {
 
 .article-list {
   margin-top: 40px;
+}
+
+#add-source {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+#add-source:hover {
+  cursor: pointer;
+}
+
+.input-container .ant-input {
+  margin: 0 10px 10px 0;
 }

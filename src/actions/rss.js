@@ -3,6 +3,7 @@ import rssAPI from '../services/api/rss';
 export const REQUEST_SOURCES = 'FETCH_SOURCES';
 export const RECEIVE_SOURCES = 'RECEIVE_SOURCES';
 export const SELECT_SOURCE = 'SELECT_SOURCE';
+export const ADD_SOURCE = 'ADD_SOURCE';
 export const REQUEST_ARTICLES = 'REQUEST_ARTICLES';
 export const RECEIVE_ARTICLES = 'RECEIVE_ARTICLES';
 export const SELECT_ARTICLE = 'SELECT_ARTICLE';
@@ -22,6 +23,10 @@ export function receiveSources(data) {
 
 export function selectSource(id) {
   return { type: SELECT_SOURCE, id };
+}
+
+export function addSource(name, url) {
+  return { type: ADD_SOURCE, name, url };
 }
 
 export function requestArticles(sourceId) {
@@ -74,13 +79,17 @@ export function fetchSources() {
   };
 }
 
-export function fetchArticles(id) {
+export function fetchArticles(source) {
   return (dispatch) => {
-    dispatch(requestArticles(id));
+    dispatch(requestArticles(source.id));
 
-    return rssAPI.fetchArticlesById(id)
+    const api = (typeof source.type !== 'undefined')
+      ? rssAPI.fetchArticlesByUrl(source.url)
+      : rssAPI.fetchArticlesById(source.id);
+
+    return api
       .then(
-        res => dispatch(receiveArticles(id, res.data)),
+        res => dispatch(receiveArticles(source.id, res.data)),
         error => console.log(error),
       );
   };

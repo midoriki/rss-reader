@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import { selectSource, fetchArticles, selectArticle } from '../actions/rss';
+import {
+  selectSource, fetchArticles, selectArticle, addSource,
+} from '../actions/rss';
 import Sources from '../components/Sources';
 
 const mapStateToProps = state => ({
@@ -9,8 +11,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   selectSource: value => dispatch(selectSource(value)),
-  fetchArticles: id => dispatch(fetchArticles(id)),
+  fetchArticles: source => dispatch(fetchArticles(source)),
   selectArticle: id => dispatch(selectArticle(id)),
+  addSource: (name, url) => dispatch(addSource(name, url)),
 });
 
 const SelectSource = connect(
