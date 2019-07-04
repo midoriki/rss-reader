@@ -64,3 +64,15 @@ iframe {
 .input-container .ant-input {
   margin: 0 10px 10px 0;
 }
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+}

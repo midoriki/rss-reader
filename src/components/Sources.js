@@ -97,7 +97,7 @@ export default class Sources extends React.Component {
           : (
             <Select
               placeholder="Select a Source"
-              style={{ width: 250 }}
+              style={{ width: 230 }}
               onChange={value => this.changeSource(value)}
               value={selectedSource}
             >
